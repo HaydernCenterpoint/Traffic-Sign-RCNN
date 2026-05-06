@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pth
+*.mp4
+*.exe
+dataset/
+.env
+model_checkpoints/
+static/uploads/*
+!static/uploads/.gitkeep

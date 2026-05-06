@@ -1,0 +1,10 @@
+torch
+torchvision
+opencv-python
+numpy
+albumentations
+torchmetrics
+tqdm
+ultralytics
+pyyaml
+PyQt6

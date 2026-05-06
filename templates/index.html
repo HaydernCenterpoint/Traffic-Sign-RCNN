@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Lens - Phân tích Biển báo Giao thông</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Coustom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <h1>Forensic Lens</h1>
+            <p>Hệ thống Phân tích Giao thông</p>
+        </div>
+
+        <div class="nav-menu">
+            <div class="nav-item active" onclick="switchTab('tong-quan', this)">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Tổng quan</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('phat-hien', this)">
+                <i class="fa-solid fa-eye"></i>
+                <span>Phát hiện</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('nghien-cuu', this)">
+                <i class="fa-solid fa-microscope"></i>
+                <span>Nghiên cứu</span>
+            </div>
+            <div class="nav-item" style="margin-top:20px;" onclick="switchTab('cai-dat', this)">
+                <i class="fa-solid fa-gear"></i>
+                <span>Cài đặt</span>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-avatar">AF</div>
+            <div class="profile-info">
+                <h4>Admin Forensic</h4>
+                <p>Nhà phân tích cấp cao</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- CONTENT AREA -->
+    <main class="main-content">
+        
+        <!-- TOP NAVBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="page-title" id="page-subtitle">TRẠNG THÁI HỆ THỐNG:</span>
+                <span class="status-badge"><i class="fa-solid fa-circle" style="font-size:8px; margin-right:5px;"></i> ĐANG HOẠT ĐỘNG</span>
+            </div>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <i class="fa-solid fa-search" style="margin-right:10px; color:#909096;"></i>
+                    <input type="text" placeholder="Tìm kiếm dữ liệu...">
+                </div>
+                <div class="icon-btn"><i class="fa-solid fa-satellite-dish"></i></div>
+                <div class="icon-btn"><i class="fa-solid fa-tower-broadcast"></i></div>
+                <div class="icon-btn"><i class="fa-solid fa-bell"></i></div>
+            </div>
+        </header>
+
+        <!-- ======================= -->
+        <!-- TAB 1: TỔNG QUAN (DASHBOARD) (Image 2) -->
+        <!-- ======================= -->
+        <div id="tong-quan" class="view-container active" style="flex-direction: column;">
+            <div class="section-header" style="padding: 0 0 20px 0;">
+                <div>
+                    <h2>Bảng điều khiển Tổng quan</h2>
+                    <p>Phân tích dữ liệu biển báo thời gian thực | Phiên làm việc: 24/05/2024</p>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-secondary"><i class="fa-solid fa-download"></i> XUẤT BÁO CÁO</button>
+                    <button class="btn-primary"><i class="fa-solid fa-play"></i> BẮT ĐẦU QUÉT</button>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Row 1: KPI Cards -->
+                <div class="stat-card">
+                    <div class="stat-title">TỔNG BIỂN BÁO / 24H</div>
+                    <div class="stat-value text-info">1,284 <span class="stat-badge">+12%</span></div>
+                    <div style="margin-top:15px; height:4px; background:#313136; border-radius:2px;"><div style="width:70%; height:100%; background:var(--accent-blue);"></div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">ĐỘ CHÍNH XÁC AI</div>
+                    <div class="stat-value text-warning">98.2% <span class="stat-badge" style="background:rgba(234,179,8,0.2); color:var(--color-warning);">ỔN ĐỊNH</span></div>
+                    <div style="margin-top:15px; font-size:12px; color:var(--text-secondary);"><i class="fa-solid fa-trophy text-warning"></i> Dựa trên 45.000 mẫu kiểm tra</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">TỐC ĐỘ XỬ LÝ</div>
+                    <div class="stat-value text-primary">14ms <span style="font-size:12px; color:var(--text-secondary);">/ FRAME</span></div>
+                    <div style="margin-top:15px; font-size:12px; display:flex; justify-content:space-between; color:var(--text-secondary);">
+                        <span><i class="fa-solid fa-chart-simple"></i></span>
+                        <span>Lat: 2ms</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">CẢNH BÁO LỖI</div>
+                    <div class="stat-value text-danger">03 <span class="stat-badge" style="background:rgba(239,68,68,0.2); color:var(--color-danger);">CẦN XỬ LÝ</span></div>
+                    <div style="margin-top:15px; font-size:12px; color:var(--text-secondary);"><i class="fa-solid fa-circle-exclamation text-danger"></i> +2</div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="chart-card">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                        <h3 style="font-size:1.1rem;">Xu hướng phát hiện</h3>
+                        <div style="display:flex; gap:10px;">
+                            <span style="padding:4px 10px; background:#313136; border-radius:4px; font-size:0.8rem;">HÀNG GIỜ</span>
+                            <span style="padding:4px 10px; font-size:0.8rem; color:var(--text-secondary);">HÀNG NGÀY</span>
+                        </div>
+                    </div>
+                    <!-- Fake chart line using SVG for aesthetic -->
+                    <div style="flex:1; display:flex; align-items:flex-end; position:relative;">
+                        <svg viewBox="0 0 500 150" style="width:100%; height:100%; preserveAspectRatio:none;">
+                            <path d="M0,120 Q50,90 100,100 T200,60 T300,140 T400,40 T500,80 L500,150 L0,150 Z" fill="rgba(59,130,246,0.1)"></path>
+                            <path d="M0,120 Q50,90 100,100 T200,60 T300,140 T400,40 T500,80" fill="none" stroke="var(--accent-blue)" stroke-width="2"></path>
+                        </svg>
+                        <div style="position:absolute; bottom:0; width:100%; display:flex; justify-content:space-between; color:var(--text-secondary); font-size:0.75rem; padding-top:10px; border-top:1px solid var(--border-color);">
+                            <span>06:00</span><span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-card" style="grid-row: span 2;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:20px; align-items:center;">
+                        <h3 style="font-size:1rem;">Phát hiện gần đây</h3>
+                        <span style="font-size:0.75rem; color:var(--accent-blue); cursor:pointer;">XEM TẤT CẢ</span>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-icon" style="background-color: var(--color-danger); color:#fff;"><i class="fa-solid fa-ban"></i></div>
+                        <div class="history-details" style="flex:1;">
+                            <h4>Biển cấm đi ngược...</h4>
+                            <p>14:22:05 &bull; <span class="text-danger">99.1%</span></p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" style="color:var(--text-secondary);"></i>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-icon" style="background-color: var(--color-warning); color:#000;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="history-details" style="flex:1;">
+                            <h4>Tốc độ tối đa 50k...</h4>
+                            <p>14:21:48 &bull; <span class="text-warning">94.8%</span></p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" style="color:var(--text-secondary);"></i>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-icon" style="background-color: var(--color-danger); color:#fff;"><i class="fa-solid fa-hand"></i></div>
+                        <div class="history-details" style="flex:1;">
+                            <h4>Biển báo Dừng lại</h4>
+                            <p>14:19:30 &bull; <span class="text-danger">98.5%</span></p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" style="color:var(--text-secondary);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= -->
+        <!-- TAB 2: PHÁT HIỆN INFERENCE (Image 3) -->
+        <!-- ======================= -->
+        <div id="phat-hien" class="view-container">
+            <div class="inference-main">
+                <div class="inference-header">
+                    <div><span>TỌA ĐỘ</span><br><strong>21.0285°N, 105.8542°E</strong></div>
+                    <div><span>TỐC ĐỘ</span><br><strong>42 KM/H</strong></div>
+                    <div><span>FRAME ID</span><br><strong>#0045821-X</strong></div>
+                </div>
+
+                <div class="video-container">
+                    <!-- Khu vực chèn OpenCV stream -->
+                    <img id="video_feed" src="https://via.placeholder.com/800x450/11111b/313244?text=Chưa+mở+Live+Feed" alt="Màn hình Video">
+                </div>
+
+                <div class="inference-controls">
+                    <button class="btn-primary" onclick="startInference()"><i class="fa-solid fa-play"></i> BẮT ĐẦU LIVE STREAM</button>
+                    <button class="btn-secondary" onclick="stopInference()"><i class="fa-solid fa-pause"></i> TẠM DỪNG</button>
+                    <div style="flex:1;"></div>
+                    <button class="btn-secondary" onclick="startTraining()"><i class="fa-solid fa-rocket"></i> AUTO-TRAIN MODEL</button>
+                </div>
+            </div>
+
+            <div class="inference-sidebar">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h3 style="font-size:1.1rem; color:#fff"><i class="fa-solid fa-clock-rotate-left"></i> LỊCH SỬ PHÁT HIỆN</h3>
+                </div>
+                
+                <div id="realtime_history" style="flex:1; overflow-y:auto;">
+                    <div class="history-item">
+                        <div class="history-icon" style="background-image: url('https://img.icons8.com/color/48/no-entry.png');"></div>
+                        <div class="history-details">
+                            <span style="font-size:10px; color:var(--color-danger); font-weight:bold;">BIỂN BÁO CẤM</span>
+                            <h4 style="margin:2px 0;">P.102: Cấm đi ngược chiều</h4>
+                            <p>10:42:15 &bull; <span style="color:var(--accent-blue)">98.4% TIN CẬY</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-icon" style="background-image: url('https://img.icons8.com/color/48/traffic-sign.png');"></div>
+                        <div class="history-details">
+                            <span style="font-size:10px; color:var(--color-info); font-weight:bold;">BIỂN CHỈ DẪN</span>
+                            <h4 style="margin:2px 0;">R.403: Đường cho xe con</h4>
+                            <p>10:41:58 &bull; <span style="color:var(--accent-blue)">92.1% TIN CẬY</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-secondary" style="width:100%; margin-top:20px;">XUẤT BÁO CÁO JSON</button>
+            </div>
+        </div>
+
+        <!-- ======================= -->
+        <!-- TAB 3: NGHIÊN CỨU & DATABASE (Image 1) -->
+        <!-- ======================= -->
+        <div id="nghien-cuu" class="view-container" style="flex-direction: column; gap:10px;">
+            <div class="section-header" style="padding: 0 0 10px 0;">
+                <div>
+                    <h2>Cơ sở dữ liệu Biển báo</h2>
+                    <p>DATASET: VN_TRAFFIC_SIGNS_2024_V1</p>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-secondary"><i class="fa-solid fa-filter"></i> LỌC DỮ LIỆU</button>
+                    <button class="btn-primary"><i class="fa-solid fa-plus"></i> THÊM MẪU VẬT</button>
+                </div>
+            </div>
+
+            <!-- Dashboard DB Content -->
+            <div style="display:flex; gap:20px; align-items:flex-start; height: 100%;">
+                
+                <div style="flex:1; background:var(--bg-card); border-radius:var(--radius-lg); padding:20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <div style="width:40px; height:40px; background:rgba(239, 68, 68, 0.2); color:var(--color-danger); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                            <div>
+                                <h3 style="color:#fff; font-size:1.2rem;">P.101 - Đường cấm</h3>
+                                <p style="font-size:0.75rem; color:var(--text-secondary);">LUẬT GIAO THÔNG ĐƯỜNG BỘ 2008 / QCVN 41:2019</p>
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-size:1.8rem; font-weight:700; color:var(--accent-blue);">82.4%</div>
+                            <div style="font-size:0.7rem; color:var(--text-secondary);">TỈ LỆ CHÍNH XÁC NHẬN DIỆN</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:20px;">
+                        <div style="width:200px; height:200px; background:#4f848c; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center;">
+                            <!-- Hình avatar mẫu từ Screenshot -->
+                            <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt="Traffic" style="width:120px; border-radius:50%">
+                        </div>
+                        <div style="flex:1;">
+                            <h4 style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:10px;">Ý NGHĨA PHÁP LÝ</h4>
+                            <p style="font-size:0.9rem; line-height:1.6; color:#ccc;">
+                                Báo đường cấm tất cả các loại phương tiện (cơ giới và thô sơ) đi lại cả hai hướng, trừ các xe được ưu tiên theo quy định. Người đi bộ vẫn được phép đi trên vỉa hè hoặc lề đường.
+                            </p>
+                            
+                            <div style="display:flex; gap:15px; margin-top:20px;">
+                                <div style="background:var(--bg-main); padding:15px; border-radius:var(--radius-sm); border-left:3px solid var(--accent-blue); flex:1;">
+                                    <div style="font-size:0.7rem; color:var(--text-secondary); margin-bottom:5px;">ĐỘ PHỔ BIẾN</div>
+                                    <div style="font-size:1.2rem; color:#fff; font-weight:600;">Cao</div>
+                                </div>
+                                <div style="background:var(--bg-main); padding:15px; border-radius:var(--radius-sm); border-left:3px solid var(--color-warning); flex:1;">
+                                    <div style="font-size:0.7rem; color:var(--text-secondary); margin-bottom:5px;">SỐ LƯỢNG ĐÃ GẮN NHÃN</div>
+                                    <div style="font-size:1.2rem; color:#fff; font-weight:600;">14,208</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width:350px; display:flex; flex-direction:column; gap:20px;">
+                    <div style="background:var(--bg-card); border-radius:var(--radius-lg); padding:20px;">
+                        <h3 style="font-size:1rem; color:#fff; margin-bottom:15px;">TẦN SUẤT XUẤT HIỆN (24H)</h3>
+                        
+                        <div style="margin-bottom:15px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:5px;"><span>NGUY HIỂM</span><span>32%</span></div>
+                            <div style="height:4px; background:var(--bg-main);"><div style="width:32%; height:100%; background:var(--color-warning);"></div></div>
+                        </div>
+                        <div style="margin-bottom:15px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:5px;"><span>BIỂN CẤM</span><span>58%</span></div>
+                            <div style="height:4px; background:var(--bg-main);"><div style="width:58%; height:100%; background:var(--color-danger);"></div></div>
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:5px;"><span>CHỈ DẪN</span><span>10%</span></div>
+                            <div style="height:4px; background:var(--bg-main);"><div style="width:10%; height:100%; background:var(--accent-blue);"></div></div>
+                        </div>
+
+                        <button class="btn-secondary" style="width:100%;">TẢI BÁO CÁO CHI TIẾT (.CSV)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= -->
+        <!-- TAB 4: CÀI ĐẶT (Image 4) -->
+        <!-- ======================= -->
+        <div id="cai-dat" class="view-container">
+            <div class="settings-grid">
+                <div class="settings-menu">
+                    <div class="settings-item active"><i class="fa-solid fa-video" style="margin-right:10px;"></i> Cấu hình Camera</div>
+                    <div class="settings-item"><i class="fa-solid fa-brain" style="margin-right:10px;"></i> Thông số AI</div>
+                    <div class="settings-item"><i class="fa-solid fa-database" style="margin-right:10px;"></i> Lưu trữ dữ liệu</div>
+                    <div class="settings-item"><i class="fa-solid fa-circle-info" style="margin-right:10px;"></i> Phiên bản</div>
+                </div>
+
+                <div class="settings-panel">
+                    <div class="settings-card">
+                        <h3 style="color:#fff; border-left:3px solid var(--accent-blue); padding-left:10px; margin-bottom:20px;">Cấu hình Camera</h3>
+                        
+                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:10px; text-transform:uppercase;">ĐỘ PHÂN GIẢI LUỒNG VIDEO</p>
+                        <div style="display:flex; gap:10px; margin-bottom:30px;">
+                            <button class="btn-primary" style="flex:1; justify-content:center;">4K (3840 x 2160)</button>
+                            <button class="btn-secondary" style="flex:1; justify-content:center;">2K (2560 x 1440)</button>
+                            <button class="btn-secondary" style="flex:1; justify-content:center;">FHD (1920 x 1080)</button>
+                        </div>
+
+                        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:10px; text-transform:uppercase;">NGƯỠNG TIN CẬY AI</p>
+                        <div style="background:var(--bg-main); padding:20px; border-radius:var(--radius-sm); margin-bottom:30px;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                                <span>Độ chính xác tối thiểu</span>
+                                <span style="font-size:1.2rem; font-weight:bold; color:#fff;">85%</span>
+                            </div>
+                            <!-- Input range styled like slider -->
+                            <input type="range" min="1" max="100" value="85" style="width:100%; accent-color: var(--accent-blue);">
+                        </div>
+                        
+                        <div style="display:flex; justify-content:flex-end; gap:15px;">
+                            <button class="btn-secondary" style="border:none;">Hủy thay đổi</button>
+                            <button class="btn-primary">LƯU CẤU HÌNH</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- UI JS TRỊNH TƯƠNG TÁC TABS VÀ KẾT NỐI FLASK BACKEND -->
+    <script>
+        function switchTab(tabId, element) {
+            // Remove active classes
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.view-container').forEach(el => el.classList.remove('active'));
+            
+            // Add active class
+            element.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // 1. CHỨC NĂNG NHẬN DIỆN WEBCAM THEO THỜI GIAN THỰC
+        function startInference() {
+            const videoFeed = document.getElementById('video_feed');
+            // Gắn src từ luồng stream OpenCV của Python Flask backend
+            videoFeed.src = "/webcam_feed";
+            
+            // Thêm log mẫu
+            addLog("Đang kết nối Camera luồng /webcam_feed...", "info");
+        }
+
+        function stopInference() {
+            const videoFeed = document.getElementById('video_feed');
+            videoFeed.src = "https://via.placeholder.com/800x450/11111b/313244?text=Chưa+mở+Live+Feed";
+            addLog("Đã tạm dừng nhận diện.", "warning");
+        }
+
+        // 2. CHỨC NĂNG HUẤN LUYỆN (TRAINING MODEL) TỪ UI -> BACKEND
+        async function startTraining() {
+            // Có thể mở rộng form cho người dùng nhập từ UI
+            const payload = {
+                dataset_path: "dataset",
+                epochs: 20,
+                batch_size: 4
+            };
+            
+            addLog("Yêu cầu backend bắt đầu Training Faster R-CNN...", "info");
+            
+            try {
+                const response = await fetch('/start_training', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    addLog(data.message, "info");
+                } else {
+                    addLog("Lỗi: " + data.error, "danger");
+                }
+            } catch (error) {
+                addLog("Lỗi mạng: " + error, "danger");
+            }
+        }
+
+        // Hàm helper gắn Log vào UI Phát Hiện
+        function addLog(text, level) {
+            const history = document.getElementById('realtime_history');
+            const colorMap = {
+                'info': 'var(--accent-blue)',
+                'warning': 'var(--color-warning)',
+                'danger': 'var(--color-danger)'
+            };
+            
+            const time = new Date().toLocaleTimeString('vi-VN');
+            const box = document.createElement('div');
+            box.className = 'history-item';
+            box.innerHTML = `
+                <div class="history-icon" style="background: #000; color: ${colorMap[level]}"><i class="fa-solid fa-microchip"></i></div>
+                <div class="history-details">
+                    <h4 style="margin:2px 0; color:#fff;">System Message</h4>
+                    <p>${time} &bull; <span style="color:${colorMap[level]}">${text}</span></p>
+                </div>
+            `;
+            history.prepend(box);
+        }
+    </script>
+</body>
+</html>

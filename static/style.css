@@ -1,0 +1,480 @@
+/* Modern UI Reset & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-main: #141416;         /* Nền chính tối */
+    --bg-sidebar: #1c1c1f;      /* Nền thanh bên */
+    --bg-card: #222226;         /* Nền card nổi */
+    --bg-card-hover: #2a2a2e;
+    
+    --text-primary: #e6e6e6;    /* Chữ chính */
+    --text-secondary: #909096;  /* Chữ phụ, caption */
+    
+    --accent-blue: #3b82f6;     /* Các nút chính */
+    --accent-blue-hover: #5090f6;
+    --border-color: #313136;    /* Đường viền */
+    
+    --color-danger: #ef4444;    /* Đỏ báo lỗi, biển cấm */
+    --color-warning: #eab308;   /* Vàng nguy hiểm */
+    --color-info: #0ea5e9;      /* Xanh chỉ dẫn */
+    
+    --font-main: 'Inter', sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 1. SIDEBAR */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    z-index: 10;
+}
+
+.logo-container {
+    padding: 0 20px 30px;
+}
+
+.logo-container h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+
+.logo-container p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.nav-item.active {
+    background-color: var(--bg-card);
+    color: #fff;
+    border-left: 3px solid var(--accent-blue);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.profile-card {
+    margin: 20px 20px 0;
+    background-color: var(--bg-card);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+}
+
+.profile-info h4 {
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.profile-info p {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+/* 2. MAIN LAYOUT */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-main);
+    overflow-y: auto;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.page-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+.status-badge {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: var(--accent-blue);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    width: 250px;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    color: #fff;
+    background-color: var(--border-color);
+}
+
+/* Header Sections */
+.section-header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-blue-hover);
+}
+
+.btn-secondary {
+    background-color: var(--bg-card);
+    color: #fff;
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-color);
+}
+
+/* VIEW CONTAINER */
+.view-container {
+    padding: 20px 30px;
+    display: none; /* Hide all by default */
+    animation: fadeIn 0.3s ease;
+}
+
+.view-container.active {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 150px);
+}
+
+/* TAB 2: TỔNG QUAN (DASHBOARD) */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.stat-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.stat-title {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.stat-badge {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.chart-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    grid-column: span 1;
+    overflow-y: auto;
+}
+
+/* TAB 3: PHÁT HIỆN (INFERENCE) */
+.inference-main {
+    flex: 3;
+    background-color: #111;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.inference-header {
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 2;
+}
+
+.inference-header span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.inference-header strong {
+    color: #fff;
+}
+
+.video-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.video-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.inference-controls {
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+}
+
+.inference-sidebar {
+    flex: 1;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255,255,255,0.02);
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+}
+
+.history-icon {
+    width: 48px;
+    height: 48px;
+    background: #000;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.history-details h4 {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.history-details p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Utilities */
+.text-danger { color: var(--color-danger); }
+.text-warning { color: var(--color-warning); }
+.text-info { color: var(--color-info); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Settings Forms */
+.settings-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    width: 100%;
+}
+.settings-menu { display: flex; flex-direction: column; gap: 10px; }
+.settings-item {
+    background: var(--bg-card); padding: 15px; border-radius: var(--radius-sm);
+    cursor: pointer; color: var(--text-secondary);
+}
+.settings-item.active { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-left: 3px solid var(--accent-blue); }
+.settings-panel { display: flex; flex-direction: column; gap: 20px; }
+.settings-card {
+    background: var(--bg-card); padding: 25px; border-radius: var(--radius-lg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #313136; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #505056; }
